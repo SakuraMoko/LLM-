@@ -1,0 +1,116 @@
+/* ─── CSS Variables ─────────────────────────────────────────── */
+:root {
+  --bg-base:        #0d0f14;
+  --bg-panel:       #13161e;
+  --bg-sidebar:     #0f111a;
+  --bg-input:       #1a1d27;
+  --bg-user-msg:    #1e3a5f;
+  --bg-ai-msg:      #161920;
+  --border:         rgba(255,255,255,0.07);
+  --border-active:  rgba(99,179,237,0.5);
+  --accent:         #63b3ed;
+  --accent-glow:    rgba(99,179,237,0.25);
+  --accent2:        #9f7aea;
+  --text-primary:   #e8eaf0;
+  --text-secondary: #8892a4;
+  --text-muted:     #4a5568;
+  --danger:         #fc8181;
+  --success:        #68d391;
+  --radius-sm:      6px;
+  --radius-md:      12px;
+  --radius-lg:      18px;
+  --shadow-panel:   0 4px 32px rgba(0,0,0,0.5);
+  --font-main:      'Noto Sans SC', sans-serif;
+  --font-mono:      'JetBrains Mono', monospace;
+  --transition:     0.2s ease;
+}
+
+/* ─── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #app {
+  height: 100%;
+  font-family: var(--font-main);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.22); }
+
+/* ─── Markdown content ───────────────────────────────────────── */
+.md-content { line-height: 1.75; font-size: 14px; }
+.md-content p  { margin-bottom: 0.75em; }
+.md-content h1,.md-content h2,.md-content h3 { font-weight: 600; margin: 1em 0 0.5em; color: var(--accent); }
+.md-content ul,.md-content ol { padding-left: 1.5em; margin-bottom: 0.75em; }
+.md-content li { margin-bottom: 0.25em; }
+.md-content code {
+  font-family: var(--font-mono);
+  background: rgba(99,179,237,0.12);
+  border: 1px solid rgba(99,179,237,0.2);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 13px;
+  color: #93c5fd;
+}
+.md-content pre {
+  background: #0a0c12;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  overflow-x: auto;
+  margin-bottom: 0.75em;
+}
+.md-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  color: #e2e8f0;
+}
+.md-content blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1em;
+  color: var(--text-secondary);
+  margin: 0.5em 0 0.75em;
+}
+.md-content table { border-collapse: collapse; width: 100%; margin-bottom: 0.75em; }
+.md-content th,.md-content td { border: 1px solid var(--border); padding: 6px 12px; text-align: left; }
+.md-content th { background: rgba(99,179,237,0.1); color: var(--accent); }
+
+/* ─── Animations ─────────────────────────────────────────────── */
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseRing {
+  0%   { transform: scale(1);   opacity: 0.8; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ─── Element Plus overrides ─────────────────────────────────── */
+.el-button { font-family: var(--font-main) !important; }
+.el-textarea__inner, .el-input__inner {
+  background: var(--bg-input) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-main) !important;
+}
+.el-textarea__inner:focus, .el-input__inner:focus {
+  border-color: var(--border-active) !important;
+  box-shadow: 0 0 0 2px var(--accent-glow) !important;
+}
